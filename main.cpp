@@ -1,41 +1,26 @@
 #include <iostream>
 
+#define N 3
+#define M 4
+
 using namespace std;
 
+int min(int a, int b, int c, int d) {
+    int min = a;
+    if(b < min) min = b;
+    if(c < min) min = c;
+    if(d < min) min = d;
+    return min;
+}
+
 int main() {
-    int width, height;
-    cout << "Podaj wysokosc: ";
-    cin >> height;
-    cout << "\n";
-    cout << "Podaj szerokosc: ";
-    cin >> width;
-    cout << "\n";
-    for(int i = 0; i < width; i++) {
-        cout << "x";
+    int tab[N][M];
+    for(int i = 0; i < N; i++) {
+        for(int j = 0; j < M; j++) {
+            cin >> tab[i][j];
+        }
     }
-    cout << "\n";
-    if(height > 2) {
-        for (int i = 0; i < height - 2; i++) {
-            for (int i = 0; i < width; i++) {
-                if (i == 0 || i == width - 1) {
-                    cout << "x";
-                } else {
-                    cout << " ";
-                }
-            }
-            cout << "\n";
-            if (i == height - 3) {
-                for (int i = 0; i < width; i++) {
-                    cout << "x";
-                }
-            }
-        }
-    }else {
-        for(int i = 0; i < height - 1; i++) {
-            for(int i = 0; i < width; i++) {
-                cout << "x";
-            }
-            cout << "\n";
-        }
+    for(int i = 0; i < N; i++) {
+        cout << "Najmniejsza liczba z wierszu " << i + 1 << " to: " << min(tab[i][0], tab[i][1], tab[i][2], tab[i][3]) << endl;
     }
 }
